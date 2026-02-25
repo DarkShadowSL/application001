@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studio Applications Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <p class="eyebrow">Studio People Portal</p>
+      <h1>Submit Support & Staff Applications</h1>
+      <p class="subtitle">
+        A single place for your team to request technical support and apply for staff opportunities.
+      </p>
+    </header>
+
+    <main class="container">
+      <section class="panel" aria-label="Application type selection">
+        <div class="tab-buttons" role="tablist" aria-label="Application types">
+          <button class="tab-button active" data-tab="support" role="tab" aria-selected="true">
+            Support Application
+          </button>
+          <button class="tab-button" data-tab="staff" role="tab" aria-selected="false">
+            Staff Application
+          </button>
+        </div>
+
+        <section class="tab-panel active" id="support" role="tabpanel">
+          <h2>Support Application</h2>
+          <p class="description">Tell the team what you need help with and how urgent it is.</p>
+
+          <form class="application-form" data-form-type="support">
+            <label>
+              Full Name
+              <input type="text" name="name" required />
+            </label>
+
+            <label>
+              Department
+              <input type="text" name="department" required />
+            </label>
+
+            <label>
+              Contact Email
+              <input type="email" name="email" required />
+            </label>
+
+            <label>
+              Request Category
+              <select name="category" required>
+                <option value="" disabled selected>Select one</option>
+                <option>Hardware</option>
+                <option>Software</option>
+                <option>Network / Internet</option>
+                <option>Production Pipeline</option>
+                <option>Other</option>
+              </select>
+            </label>
+
+            <label>
+              Priority
+              <select name="priority" required>
+                <option value="" disabled selected>Select one</option>
+                <option>Low</option>
+                <option>Normal</option>
+                <option>High</option>
+                <option>Critical</option>
+              </select>
+            </label>
+
+            <label>
+              Describe the issue
+              <textarea name="message" rows="4" required></textarea>
+            </label>
+
+            <button type="submit">Submit Support Request</button>
+            <p class="result" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section class="tab-panel" id="staff" role="tabpanel" aria-hidden="true">
+          <h2>Staff Application</h2>
+          <p class="description">Apply for internal roles and share your experience.</p>
+
+          <form class="application-form" data-form-type="staff">
+            <label>
+              Full Name
+              <input type="text" name="name" required />
+            </label>
+
+            <label>
+              Current Role
+              <input type="text" name="currentRole" required />
+            </label>
+
+            <label>
+              Contact Email
+              <input type="email" name="email" required />
+            </label>
+
+            <label>
+              Position Applying For
+              <input type="text" name="position" required />
+            </label>
+
+            <label>
+              Years of Relevant Experience
+              <input type="number" name="experience" min="0" max="60" required />
+            </label>
+
+            <label>
+              Why are you a good fit?
+              <textarea name="fit" rows="4" required></textarea>
+            </label>
+
+            <button type="submit">Submit Staff Application</button>
+            <p class="result" aria-live="polite"></p>
+          </form>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
