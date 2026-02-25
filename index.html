@@ -3,16 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Studio Applications Portal</title>
+    <title>Studio Applications Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="glow glow-one" aria-hidden="true"></div>
+    <div class="glow glow-two" aria-hidden="true"></div>
+
     <header class="hero">
-      <p class="eyebrow">Studio People Portal</p>
-      <h1>Submit Support & Staff Applications</h1>
+      <p class="eyebrow">Studio People Hub</p>
+      <h1>Applications Portal for Support, Staffing & Internal Requests</h1>
       <p class="subtitle">
-        A single place for your team to request technical support and apply for staff opportunities.
+        Use this portal to submit technical support needs, apply for staff opportunities, and route
+        people operations requests with clear detail and faster response times.
       </p>
+
+      <div class="highlights" aria-label="Portal benefits">
+        <article class="highlight-card">
+          <h2>Faster Support Routing</h2>
+          <p>Structured details help your support team prioritize critical incidents quickly.</p>
+        </article>
+        <article class="highlight-card">
+          <h2>Transparent Hiring Flow</h2>
+          <p>Staff applications include role preferences, scheduling, and background context.</p>
+        </article>
+        <article class="highlight-card">
+          <h2>One Team Workspace</h2>
+          <p>All internal people requests live in one clean, mobile-friendly destination.</p>
+        </article>
+      </div>
     </header>
 
     <main class="container">
@@ -27,51 +52,75 @@
         </div>
 
         <section class="tab-panel active" id="support" role="tabpanel">
-          <h2>Support Application</h2>
-          <p class="description">Tell the team what you need help with and how urgent it is.</p>
+          <div class="panel-header">
+            <h2>Support Application</h2>
+            <p class="description">
+              Share the full issue context so our studio support team can triage and resolve your
+              request quickly.
+            </p>
+          </div>
 
           <form class="application-form" data-form-type="support">
-            <label>
-              Full Name
-              <input type="text" name="name" required />
-            </label>
+            <div class="form-grid">
+              <label>
+                Full Name
+                <input type="text" name="name" autocomplete="name" required />
+              </label>
+
+              <label>
+                Department
+                <input type="text" name="department" placeholder="Animation, Audio, Design..." required />
+              </label>
+
+              <label>
+                Work Email
+                <input type="email" name="email" autocomplete="email" required />
+              </label>
+
+              <label>
+                Contact Number
+                <input type="tel" name="phone" placeholder="Optional" />
+              </label>
+
+              <label>
+                Request Category
+                <select name="category" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option>Hardware</option>
+                  <option>Software</option>
+                  <option>Network / Internet</option>
+                  <option>Production Pipeline</option>
+                  <option>Security / Access</option>
+                  <option>Other</option>
+                </select>
+              </label>
+
+              <label>
+                Priority
+                <select name="priority" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option>Low</option>
+                  <option>Normal</option>
+                  <option>High</option>
+                  <option>Critical</option>
+                </select>
+              </label>
+            </div>
 
             <label>
-              Department
-              <input type="text" name="department" required />
-            </label>
-
-            <label>
-              Contact Email
-              <input type="email" name="email" required />
-            </label>
-
-            <label>
-              Request Category
-              <select name="category" required>
-                <option value="" disabled selected>Select one</option>
-                <option>Hardware</option>
-                <option>Software</option>
-                <option>Network / Internet</option>
-                <option>Production Pipeline</option>
-                <option>Other</option>
-              </select>
-            </label>
-
-            <label>
-              Priority
-              <select name="priority" required>
-                <option value="" disabled selected>Select one</option>
-                <option>Low</option>
-                <option>Normal</option>
-                <option>High</option>
-                <option>Critical</option>
-              </select>
+              Affected Tools / Systems
+              <input type="text" name="systems" placeholder="e.g. Unreal, Maya, Render Farm" />
             </label>
 
             <label>
               Describe the issue
-              <textarea name="message" rows="4" required></textarea>
+              <textarea name="message" rows="5" maxlength="700" required></textarea>
+              <span class="field-note" data-counter-for="message">0 / 700 characters</span>
+            </label>
+
+            <label class="checkbox">
+              <input type="checkbox" name="consent" required />
+              <span>I confirm this request contains accurate details for internal support handling.</span>
             </label>
 
             <button type="submit">Submit Support Request</button>
@@ -80,44 +129,91 @@
         </section>
 
         <section class="tab-panel" id="staff" role="tabpanel" aria-hidden="true">
-          <h2>Staff Application</h2>
-          <p class="description">Apply for internal roles and share your experience.</p>
+          <div class="panel-header">
+            <h2>Staff Application</h2>
+            <p class="description">
+              Apply for internal opportunities with role preferences, portfolio links, and
+              availability details.
+            </p>
+          </div>
 
           <form class="application-form" data-form-type="staff">
+            <div class="form-grid">
+              <label>
+                Full Name
+                <input type="text" name="name" autocomplete="name" required />
+              </label>
+
+              <label>
+                Current Role
+                <input type="text" name="currentRole" required />
+              </label>
+
+              <label>
+                Work Email
+                <input type="email" name="email" autocomplete="email" required />
+              </label>
+
+              <label>
+                Team / Department
+                <input type="text" name="team" required />
+              </label>
+
+              <label>
+                Position Applying For
+                <input type="text" name="position" required />
+              </label>
+
+              <label>
+                Years of Relevant Experience
+                <input type="number" name="experience" min="0" max="60" required />
+              </label>
+            </div>
+
             <label>
-              Full Name
-              <input type="text" name="name" required />
+              Portfolio / Reel / LinkedIn URL
+              <input type="url" name="portfolio" placeholder="https://" />
             </label>
 
             <label>
-              Current Role
-              <input type="text" name="currentRole" required />
+              Why are you a strong fit?
+              <textarea name="fit" rows="5" maxlength="700" required></textarea>
+              <span class="field-note" data-counter-for="fit">0 / 700 characters</span>
             </label>
 
             <label>
-              Contact Email
-              <input type="email" name="email" required />
+              Earliest Start Date
+              <input type="date" name="startDate" required />
             </label>
 
-            <label>
-              Position Applying For
-              <input type="text" name="position" required />
-            </label>
-
-            <label>
-              Years of Relevant Experience
-              <input type="number" name="experience" min="0" max="60" required />
-            </label>
-
-            <label>
-              Why are you a good fit?
-              <textarea name="fit" rows="4" required></textarea>
+            <label class="checkbox">
+              <input type="checkbox" name="consent" required />
+              <span>I agree to share this information with studio leadership and recruitment staff.</span>
             </label>
 
             <button type="submit">Submit Staff Application</button>
             <p class="result" aria-live="polite"></p>
           </form>
         </section>
+      </section>
+
+      <section class="info-grid" aria-label="Guidance and response details">
+        <article class="info-card">
+          <h2>What happens next?</h2>
+          <ul>
+            <li><strong>Support:</strong> triage within one business day (critical: immediately).</li>
+            <li><strong>Staff:</strong> review by HR and hiring leads within 3–5 business days.</li>
+            <li>Follow-ups are sent to your email for status updates and next actions.</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h2>Tips for better submissions</h2>
+          <ul>
+            <li>Be specific about impacted tools, teams, and deadlines.</li>
+            <li>Include concise context and expected outcomes.</li>
+            <li>For staff requests, add measurable achievements and links to work samples.</li>
+          </ul>
+        </article>
       </section>
     </main>
 
