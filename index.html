@@ -18,24 +18,24 @@
 
     <header class="hero">
       <p class="eyebrow">Studio People Hub</p>
-      <h1>Applications Portal for Support, Staffing & Internal Requests</h1>
+      <h1>Separate Applications for Every Internal Studio Need</h1>
       <p class="subtitle">
-        Use this portal to submit technical support needs, apply for staff opportunities, and route
-        people operations requests with clear detail and faster response times.
+        Choose the exact application below: Support, Staff, Leave, or Equipment. Each form is
+        separate so requests are routed to the correct team immediately.
       </p>
 
       <div class="highlights" aria-label="Portal benefits">
         <article class="highlight-card">
-          <h2>Faster Support Routing</h2>
-          <p>Structured details help your support team prioritize critical incidents quickly.</p>
+          <h2>Separate Workflows</h2>
+          <p>Every request type has its own application form and dedicated review route.</p>
         </article>
         <article class="highlight-card">
-          <h2>Transparent Hiring Flow</h2>
-          <p>Staff applications include role preferences, scheduling, and background context.</p>
+          <h2>Clear Categories</h2>
+          <p>Expanded categories make it easier for people to choose exactly what they need.</p>
         </article>
         <article class="highlight-card">
-          <h2>One Team Workspace</h2>
-          <p>All internal people requests live in one clean, mobile-friendly destination.</p>
+          <h2>Faster Follow-Up</h2>
+          <p>Each submission gets an instant confirmation ID and next-step guidance.</p>
         </article>
       </div>
     </header>
@@ -49,38 +49,26 @@
           <button class="tab-button" data-tab="staff" role="tab" aria-selected="false">
             Staff Application
           </button>
+          <button class="tab-button" data-tab="leave" role="tab" aria-selected="false">
+            Leave Application
+          </button>
+          <button class="tab-button" data-tab="equipment" role="tab" aria-selected="false">
+            Equipment Application
+          </button>
         </div>
 
         <section class="tab-panel active" id="support" role="tabpanel">
           <div class="panel-header">
             <h2>Support Application</h2>
-            <p class="description">
-              Share the full issue context so our studio support team can triage and resolve your
-              request quickly.
-            </p>
+            <p class="description">For technical issues, access problems, tools, and infrastructure incidents.</p>
           </div>
 
-          <form class="application-form" data-form-type="support">
+          <form class="application-form" data-form-type="support" data-form-title="support request">
             <div class="form-grid">
-              <label>
-                Full Name
-                <input type="text" name="name" autocomplete="name" required />
-              </label>
-
-              <label>
-                Department
-                <input type="text" name="department" placeholder="Animation, Audio, Design..." required />
-              </label>
-
-              <label>
-                Work Email
-                <input type="email" name="email" autocomplete="email" required />
-              </label>
-
-              <label>
-                Contact Number
-                <input type="tel" name="phone" placeholder="Optional" />
-              </label>
+              <label>Full Name<input type="text" name="name" autocomplete="name" required /></label>
+              <label>Department<input type="text" name="department" required /></label>
+              <label>Work Email<input type="email" name="email" autocomplete="email" required /></label>
+              <label>Contact Number<input type="tel" name="phone" placeholder="Optional" /></label>
 
               <label>
                 Request Category
@@ -90,7 +78,14 @@
                   <option>Software</option>
                   <option>Network / Internet</option>
                   <option>Production Pipeline</option>
+                  <option>Account Access / Permissions</option>
+                  <option>Storage / File Recovery</option>
+                  <option>Build / Deployment</option>
+                  <option>License / Subscription</option>
+                  <option>Security Incident</option>
                   <option>Security / Access</option>
+                  <option>Onboarding Setup</option>
+                  <option>Offboarding Support</option>
                   <option>Other</option>
                 </select>
               </label>
@@ -108,21 +103,10 @@
             </div>
 
             <label>
-              Affected Tools / Systems
-              <input type="text" name="systems" placeholder="e.g. Unreal, Maya, Render Farm" />
-            </label>
-
-            <label>
               Describe the issue
               <textarea name="message" rows="5" maxlength="700" required></textarea>
               <span class="field-note" data-counter-for="message">0 / 700 characters</span>
             </label>
-
-            <label class="checkbox">
-              <input type="checkbox" name="consent" required />
-              <span>I confirm this request contains accurate details for internal support handling.</span>
-            </label>
-
             <button type="submit">Submit Support Request</button>
             <p class="result" aria-live="polite"></p>
           </form>
@@ -131,89 +115,152 @@
         <section class="tab-panel" id="staff" role="tabpanel" aria-hidden="true">
           <div class="panel-header">
             <h2>Staff Application</h2>
-            <p class="description">
-              Apply for internal opportunities with role preferences, portfolio links, and
-              availability details.
-            </p>
+            <p class="description">For internal role applications, transfers, and team openings.</p>
           </div>
 
-          <form class="application-form" data-form-type="staff">
+          <form class="application-form" data-form-type="staff" data-form-title="staff application">
             <div class="form-grid">
-              <label>
-                Full Name
-                <input type="text" name="name" autocomplete="name" required />
-              </label>
-
-              <label>
-                Current Role
-                <input type="text" name="currentRole" required />
-              </label>
-
-              <label>
-                Work Email
-                <input type="email" name="email" autocomplete="email" required />
-              </label>
+              <label>Full Name<input type="text" name="name" autocomplete="name" required /></label>
+              <label>Current Role<input type="text" name="currentRole" required /></label>
+              <label>Work Email<input type="email" name="email" autocomplete="email" required /></label>
 
               <label>
                 Team / Department
-                <input type="text" name="team" required />
+                <select name="team" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option>Animation</option>
+                  <option>Art</option>
+                  <option>Audio</option>
+                  <option>Design</option>
+                  <option>Engineering</option>
+                  <option>IT & Operations</option>
+                  <option>Marketing</option>
+                  <option>Production</option>
+                  <option>QA</option>
+                  <option>People Operations</option>
+                  <option>Other</option>
+                </select>
               </label>
 
               <label>
                 Position Applying For
-                <input type="text" name="position" required />
+                <select name="position" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option>Support Specialist</option>
+                  <option>Production Coordinator</option>
+                  <option>Project Manager</option>
+                  <option>Gameplay Programmer</option>
+                  <option>Technical Artist</option>
+                  <option>3D Artist</option>
+                  <option>Animator</option>
+                  <option>UI/UX Designer</option>
+                  <option>QA Analyst</option>
+                  <option>Recruiter</option>
+                  <option>HR Generalist</option>
+                  <option>Other</option>
+                </select>
               </label>
 
-              <label>
-                Years of Relevant Experience
-                <input type="number" name="experience" min="0" max="60" required />
-              </label>
+              <label>Years of Experience<input type="number" name="experience" min="0" max="60" required /></label>
             </div>
-
-            <label>
-              Portfolio / Reel / LinkedIn URL
-              <input type="url" name="portfolio" placeholder="https://" />
-            </label>
 
             <label>
               Why are you a strong fit?
               <textarea name="fit" rows="5" maxlength="700" required></textarea>
               <span class="field-note" data-counter-for="fit">0 / 700 characters</span>
             </label>
-
-            <label>
-              Earliest Start Date
-              <input type="date" name="startDate" required />
-            </label>
-
-            <label class="checkbox">
-              <input type="checkbox" name="consent" required />
-              <span>I agree to share this information with studio leadership and recruitment staff.</span>
-            </label>
-
             <button type="submit">Submit Staff Application</button>
             <p class="result" aria-live="polite"></p>
           </form>
         </section>
-      </section>
 
-      <section class="info-grid" aria-label="Guidance and response details">
-        <article class="info-card">
-          <h2>What happens next?</h2>
-          <ul>
-            <li><strong>Support:</strong> triage within one business day (critical: immediately).</li>
-            <li><strong>Staff:</strong> review by HR and hiring leads within 3–5 business days.</li>
-            <li>Follow-ups are sent to your email for status updates and next actions.</li>
-          </ul>
-        </article>
-        <article class="info-card">
-          <h2>Tips for better submissions</h2>
-          <ul>
-            <li>Be specific about impacted tools, teams, and deadlines.</li>
-            <li>Include concise context and expected outcomes.</li>
-            <li>For staff requests, add measurable achievements and links to work samples.</li>
-          </ul>
-        </article>
+        <section class="tab-panel" id="leave" role="tabpanel" aria-hidden="true">
+          <div class="panel-header">
+            <h2>Leave Application</h2>
+            <p class="description">For vacation, sick leave, personal leave, or remote-work exceptions.</p>
+          </div>
+
+          <form class="application-form" data-form-type="leave" data-form-title="leave application">
+            <div class="form-grid">
+              <label>Full Name<input type="text" name="name" autocomplete="name" required /></label>
+              <label>Manager Name<input type="text" name="manager" required /></label>
+              <label>Work Email<input type="email" name="email" autocomplete="email" required /></label>
+
+              <label>
+                Leave Category
+                <select name="leaveCategory" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option>Vacation / PTO</option>
+                  <option>Sick Leave</option>
+                  <option>Personal Leave</option>
+                  <option>Family / Emergency Leave</option>
+                  <option>Remote Work Exception</option>
+                </select>
+              </label>
+
+              <label>Start Date<input type="date" name="startDate" required /></label>
+              <label>End Date<input type="date" name="endDate" required /></label>
+            </div>
+
+            <label>
+              Coverage Plan / Notes
+              <textarea name="coverage" rows="4" maxlength="500" required></textarea>
+              <span class="field-note" data-counter-for="coverage">0 / 500 characters</span>
+            </label>
+            <button type="submit">Submit Leave Application</button>
+            <p class="result" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section class="tab-panel" id="equipment" role="tabpanel" aria-hidden="true">
+          <div class="panel-header">
+            <h2>Equipment Application</h2>
+            <p class="description">For new hardware, peripherals, replacements, and home-office equipment requests.</p>
+          </div>
+
+          <form class="application-form" data-form-type="equipment" data-form-title="equipment application">
+            <div class="form-grid">
+              <label>Full Name<input type="text" name="name" autocomplete="name" required /></label>
+              <label>Department<input type="text" name="department" required /></label>
+              <label>Work Email<input type="email" name="email" autocomplete="email" required /></label>
+
+              <label>
+                Equipment Category
+                <select name="equipmentCategory" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option>Laptop / Workstation</option>
+                  <option>Monitor / Display</option>
+                  <option>Input Device (Keyboard/Mouse/Tablet)</option>
+                  <option>Audio Gear (Mic/Headset/Speakers)</option>
+                  <option>Mobile Device</option>
+                  <option>Ergonomic / Home Office</option>
+                  <option>Replacement / Repair</option>
+                  <option>Other</option>
+                </select>
+              </label>
+
+              <label>
+                Urgency
+                <select name="urgency" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option>Standard</option>
+                  <option>Project Critical</option>
+                  <option>Replacement Needed ASAP</option>
+                </select>
+              </label>
+
+              <label>Needed By<input type="date" name="neededBy" required /></label>
+            </div>
+
+            <label>
+              Request Details
+              <textarea name="details" rows="4" maxlength="500" required></textarea>
+              <span class="field-note" data-counter-for="details">0 / 500 characters</span>
+            </label>
+            <button type="submit">Submit Equipment Application</button>
+            <p class="result" aria-live="polite"></p>
+          </form>
+        </section>
       </section>
     </main>
 
