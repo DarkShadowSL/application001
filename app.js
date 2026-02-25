@@ -2,6 +2,13 @@ const tabButtons = document.querySelectorAll('.tab-button');
 const tabPanels = document.querySelectorAll('.tab-panel');
 const textAreas = document.querySelectorAll('textarea[maxlength]');
 
+const ticketPrefixes = {
+  support: 'SUP',
+  staff: 'STAFF',
+  leave: 'LEAVE',
+  equipment: 'EQP',
+};
+
 function activateTab(tabId) {
   tabButtons.forEach((button) => {
     const isActive = button.dataset.tab === tabId;
@@ -22,7 +29,6 @@ tabButtons.forEach((button) => {
 
 textAreas.forEach((textarea) => {
   const counter = textarea.parentElement.querySelector(`[data-counter-for="${textarea.name}"]`);
-
   if (!counter) return;
 
   const updateCounter = () => {
@@ -41,17 +47,15 @@ forms.forEach((form) => {
     event.preventDefault();
 
     const formData = new FormData(form);
-    const applicantName = formData.get('name');
+    const applicantName = formData.get('name') || 'there';
     const type = form.dataset.formType;
+    const formTitle = form.dataset.formTitle || 'application';
 
-    const ticketPrefix = type === 'support' ? 'SUP' : 'STAFF';
+    const ticketPrefix = ticketPrefixes[type] || 'REQ';
     const ticketId = `${ticketPrefix}-${Math.floor(1000 + Math.random() * 9000)}`;
 
     resultMessage.classList.add('success');
-    resultMessage.textContent =
-      type === 'support'
-        ? `Thank you, ${applicantName}. Your support request (${ticketId}) has been submitted.`
-        : `Thank you, ${applicantName}. Your staff application (${ticketId}) has been submitted.`;
+    resultMessage.textContent = `Thank you, ${applicantName}. Your ${formTitle} (${ticketId}) has been submitted.`;
 
     form.reset();
 
