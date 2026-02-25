@@ -123,6 +123,7 @@ h1 {
 
 .tab-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.7rem;
   margin-bottom: 1.3rem;
 }
